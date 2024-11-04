@@ -23,21 +23,6 @@ def get_csv_inf():
 
 def save_csv(info):
     empty_array, get_id, get_office, get_title, get_value, get_labels = info
-    with open('./train/table_clean.csv', 'w', newline='', encoding="utf-8") as f:
-        writer = csv.writer(f)
-        csv_id = [value for index, value in enumerate(get_id) if index not in empty_array]
-        csv_office = [value for index, value in enumerate(get_office) if index not in empty_array]
-        csv_title = [value for index, value in enumerate(get_title) if index not in empty_array]
-        csv_news = [value for index, value in enumerate(get_value) if index not in empty_array]
-        csv_label = [value for index, value in enumerate(get_labels) if index not in empty_array]
-
-        writer.writerow(["id", "office", "title", "News", "label"])
-        for i in range(len(csv_id)):
-            writer.writerow([csv_id[i], csv_office[i], csv_title[i], csv_news[i], csv_label[i]])
-
-
-def save_csv_out(info):
-    empty_array, get_id, get_office, get_title, get_value, get_labels = info
     with open('./train/table_clean_out.csv', 'w', newline='', encoding="utf-8") as f:
         writer = csv.writer(f)
         csv_id = [value for index, value in enumerate(get_id) if index in empty_array]
@@ -54,4 +39,3 @@ def save_csv_out(info):
 if __name__ == '__main__':
     infomation = get_csv_inf()
     save_csv(infomation)
-    save_csv_out(infomation)
